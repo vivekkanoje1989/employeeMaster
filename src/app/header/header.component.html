@@ -11,6 +11,9 @@
                             Welcome! {{loggInUser?.username}}
                         </a>
                         <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="javascript:void(0)" (click)="gotoEmployeeMaster()">Employee Master</a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)" (click)="gotoAgGridLib()">AG Grid Lib</a></li>
+                            <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="javascript:void(0)" (click)="logOut()">Logout</a></li>
                         </ul>
                     </li>
@@ -43,8 +46,10 @@
                                 Welcome! {{loggInUser?.username}}
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="javascript:void(0)" (click)="logOut()">Logout</a>
-                                </li>
+                                <li><a class="dropdown-item" href="javascript:void(0)" (click)="gotoEmployeeMaster()">Employee Master</a></li>
+                                <li><a class="dropdown-item" href="javascript:void(0)" (click)="gotoAgGridLib()">AG Grid Lib</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="javascript:void(0)" (click)="logOut()">Logout</a></li>
                             </ul>
                         </li>
                     </ul>

@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { authGuard } from './guard/auth.guard';
+import { AgDatagridLibComponent } from './ag-datagrid-lib/ag-datagrid-lib.component';
 
 export const routes: Routes = [
     {
@@ -12,5 +13,8 @@ export const routes: Routes = [
     },
     {
         path: 'employee', component: EmployeesComponent, canActivate: [authGuard]
+    },
+    {
+        path: 'lib-ag-grid', component: AgDatagridLibComponent, canActivate: [authGuard]
     }
 ];

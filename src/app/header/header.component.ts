@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit, signal } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { User } from '../interfaces/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,7 @@ import { User } from '../interfaces/user';
 export class HeaderComponent implements OnInit, OnDestroy {
   loggInUser: User | null = null;
   appTitle: string = 'EmployeeMaster';
-  constructor(public auth: AuthService) {
+  constructor(public auth: AuthService, private router: Router) {
     this.auth.restoreSession();
   }
   ngOnInit(): void {
@@ -25,6 +26,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   logOut(): void {
     this.auth.logout();
+  }
+
+  gotoAgGridLib(): void {
+    this.router.navigate(['/lib-ag-grid'])
+  }
+
+  gotoEmployeeMaster():void {
+    this.router.navigate(['/employee'])
   }
 
   ngOnDestroy(): void {
