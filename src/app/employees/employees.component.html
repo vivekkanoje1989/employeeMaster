@@ -1,0 +1,15 @@
+<ag-grid-angular class="ag-theme-alpine" style="width: auto; height: 60vh;" [rowData]="employees"
+    [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" rowSelection="single" (rowClicked)="onSelectEmployee($event)">
+</ag-grid-angular>
+
+<div class="alert alert-primary mt-2" role="alert" *ngIf="isAdmin && !selectedEmployee">
+  Select a row to edit employee...
+</div>
+<div class="alert alert-danger mt-2" role="alert" *ngIf="!isAdmin && selectedEmployee">
+  Login as ADMIN to edit employee...
+</div>
+<button *ngIf="isAdmin && selectedEmployee" class="btn btn-secondary mt-3" (click)="showEmpModal = true">
+    Edit Selected
+</button>
+
+<app-employee-modal *ngIf="showEmpModal" [employee]="selectedEmployee" (close)="onModalClose($event)"></app-employee-modal>

@@ -1,0 +1,62 @@
+<div class="modal show d-block" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content p-3">
+      <h5>Edit Employee</h5>
+
+      <form #editForm="ngForm" (ngSubmit)="save(editForm)">
+        <div class="mb-2">
+          <input
+            type="text"
+            name="name"
+            [(ngModel)]="employee.name"
+            required
+            class="form-control"
+            placeholder="Name"
+            #name="ngModel"
+          />
+          <div *ngIf="name.invalid && name.touched" class="text-danger">
+            Name is required.
+          </div>
+        </div>
+
+        <div class="mb-2">
+          <input
+            type="text"
+            name="department"
+            [(ngModel)]="employee.department"
+            required
+            class="form-control"
+            placeholder="Department"
+            #department="ngModel"
+          />
+          <div *ngIf="department.invalid && department.touched" class="text-danger">
+            Department is required.
+          </div>
+        </div>
+
+        <div class="mb-2">
+          <input
+            type="number"
+            name="salary"
+            [(ngModel)]="employee.salary"
+            required
+            min="0"
+            class="form-control"
+            placeholder="Salary"
+            #salary="ngModel"
+          />
+          <div *ngIf="salary.invalid && salary.touched" class="text-danger">
+            Enter a valid salary.
+          </div>
+        </div>
+
+        <div class="text-end">
+          <button type="button" class="btn btn-secondary me-2" (click)="cancel(false)">Cancel</button>
+          <button type="submit" class="btn btn-success" [disabled]="editForm.invalid">
+            Save
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

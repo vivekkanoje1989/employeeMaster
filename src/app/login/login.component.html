@@ -1,0 +1,35 @@
+<div class="container mt-5" style="max-width: 400px;">
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input
+        id="username"
+        type="text"
+        class="form-control"
+        formControlName="username"
+        [ngClass]="{'is-invalid': f['username'].touched && f['username'].invalid}"
+      />
+      <div *ngIf="f['username'].touched && f['username'].invalid" class="invalid-feedback">
+        Username is required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input
+        id="password"
+        type="password"
+        class="form-control"
+        formControlName="password"
+        [ngClass]="{'is-invalid': f['password'].touched && f['password'].invalid}"
+      />
+      <div *ngIf="f['password'].touched && f['password'].invalid" class="invalid-feedback">
+        Password is required.
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100" [disabled]="loginForm.invalid">
+      Login
+    </button>
+  </form>
+</div>
