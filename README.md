@@ -9,6 +9,14 @@ To start a local development server, run:
 ```bash
 ng serve
 ```
+## Credentials
+For Admin User:
+username='admin'
+password='admin'
+
+For Employee User:
+username='employee'
+password='employee'
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
