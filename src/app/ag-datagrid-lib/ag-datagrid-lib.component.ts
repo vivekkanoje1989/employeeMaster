@@ -37,6 +37,12 @@ export class AgDatagridLibComponent implements OnInit {
         filter: true,
         editable: true,
         resizable: true
+      },
+      { field: 'age' },
+      { field: 'gender' },
+      {
+        field: 'isActive',
+        valueFormatter: (p:any) => p.value ? 'Yes' : 'No'
       }
     ],
     pagination: true,
@@ -53,6 +59,7 @@ export class AgDatagridLibComponent implements OnInit {
 
   getCellChangedData(e: any) {
     console.log('getCellChangedData: e:', e);
+    this.empService.updateEmployee(e);
   }
 
 }

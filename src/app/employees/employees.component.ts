@@ -18,7 +18,9 @@ export class EmployeesComponent implements OnInit{
     { field: 'id', headerName: 'ID' },
     { field: 'name', headerName: 'Name' },
     { field: 'department', headerName: 'Department' },
-    { field: 'salary', headerName: 'Salary' }
+    { field: 'salary', headerName: 'Salary' },
+    { field: 'age', headerName: 'Age' },
+    { field: 'gender', headerName: 'Gender' }
   ];
   defaultColDef: ColDef = {
     sortable: true,

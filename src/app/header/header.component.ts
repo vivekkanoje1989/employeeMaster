@@ -36,6 +36,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.router.navigate(['/employee'])
   }
 
+  gotoAddEmployee():void {
+    this.router.navigate(['/add-employee'])
+  }
+
   ngOnDestroy(): void {
     this.loggInUser = null;
   }

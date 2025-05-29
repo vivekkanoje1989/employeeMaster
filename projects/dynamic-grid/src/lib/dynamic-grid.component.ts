@@ -21,7 +21,7 @@ import { AgGridModule } from 'ag-grid-angular';
   styles: `
   .grid-wrapper {
     width: 100%;
-    height: 500px;
+    height: 60vh;
     transition: all 0.3s ease;
   }
   .grid-wrapper.fullscreen {

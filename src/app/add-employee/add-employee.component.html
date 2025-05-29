@@ -1,0 +1,64 @@
+<ag-grid-angular class="ag-theme-alpine" style="height: 50vh; width: 100%;" 
+[rowData]="employees"
+[columnDefs]="columnDefs"
+[defaultColDef]="defaultColDef"
+[pagination]="true"
+(cellClicked)="onCellClicked($event)">
+</ag-grid-angular>
+
+<div class="d-flex mt-3">
+    <button class="btn btn-primary" (click)="openModal()">Add Employee</button>
+</div>
+
+<div class="modal fade show d-block" tabindex="-1" *ngIf="showModal">
+    <div class="modal-dialog">
+        <div class="modal-content p-3">
+            <h5>{{ isEditMode ? 'Edit' : 'Add' }} Employee</h5>
+
+            <form [formGroup]="addEmployeeForm" (ngSubmit)="onSubmit()">
+                <input formControlName="name" class="form-control my-2" placeholder="Name" />
+                <div class="text-danger" *ngIf="addEmployeeForm.get('name')?.touched && addEmployeeForm.get('name')?.invalid">
+                    Name is required and should be alphabetic.
+                </div>
+
+                <input formControlName="age" class="form-control my-2" placeholder="Age" />
+                <div class="text-danger" *ngIf="addEmployeeForm.get('age')?.touched && addEmployeeForm.get('age')?.invalid">
+                    Age is required and must be numeric.
+                </div>
+
+                <ng-select formControlName="department" [items]="departments" bindLabel="label" bindValue="value"
+                    placeholder="Select Department" class="my-2">
+                </ng-select>
+                <div class="text-danger"
+                    *ngIf="addEmployeeForm.get('department')?.touched && addEmployeeForm.get('department')?.invalid">
+                    Department is required.
+                </div>
+
+                <div class="my-2">
+                    <label *ngFor="let g of genderOptions" class="me-3">
+                        <input type="radio" [value]="g" formControlName="gender" class="form-check-input me-1" />
+                        {{ g }}
+                    </label>
+                    <div class="text-danger"
+                        *ngIf="addEmployeeForm.get('gender')?.touched && addEmployeeForm.get('gender')?.invalid">
+                        Gender is required.
+                    </div>
+                </div>
+
+                <textarea formControlName="bio" rows="3" class="form-control my-2" placeholder="Bio"></textarea>
+
+                <div class="form-check my-2">
+                    <input id="isActiveID" class="form-check-input" type="checkbox" formControlName="isActive" />
+                    <label class="form-check-label" for="isActiveID">Active</label>
+                </div>
+
+                <div class="text-end mt-3">
+                    <button type="button" class="btn btn-secondary me-2" (click)="closeModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal-backdrop fade show" *ngIf="showModal"></div>
