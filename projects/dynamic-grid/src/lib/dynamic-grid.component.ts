@@ -8,7 +8,7 @@ import { AgGridModule } from 'ag-grid-angular';
   template: `
   <div #gridContainer class="ag-theme-alpine grid-wrapper" [class.fullscreen]="isFullscreen">
       <ag-grid-angular
-        [ngStyle]="{ height: '50vh', width: '100%' }"
+        [ngStyle]="{ height: '60vh', width: '100%' }"
         [rowData]="rowData"
         [columnDefs]="config?.columns"
         [defaultColDef]="defaultColDef"

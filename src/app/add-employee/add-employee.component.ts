@@ -5,6 +5,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { AgGridAngular } from 'ag-grid-angular';
 import { EmployeeService } from '../services/employee.service';
 import { CellClickedEvent, ColDef } from 'ag-grid-community';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-add-employee',
@@ -15,6 +16,7 @@ import { CellClickedEvent, ColDef } from 'ag-grid-community';
 export class AddEmployeeComponent implements OnInit {
   addEmployeeForm!: FormGroup;
   employees: any[] = [];
+  isAdmin = false;
   departments = [
     { label: 'HR', value: 'HR' },
     { label: 'Engineering', value: 'Engineering' },
@@ -26,8 +28,9 @@ export class AddEmployeeComponent implements OnInit {
   editingIndex: number | null = null;
   columnDefs: ColDef[] = [
     { field: 'name' },
-    { field: 'age' },
     { field: 'department' },
+    { field: 'salary' },
+    { field: 'age' },
     { field: 'gender' },
     {
       field: 'isActive',
@@ -48,9 +51,10 @@ export class AddEmployeeComponent implements OnInit {
     resizable: true
   };
 
-  constructor(private fb: FormBuilder, private empService: EmployeeService) { }
+  constructor(private fb: FormBuilder, private empService: EmployeeService, private auth: AuthService) { }
 
   async ngOnInit() {
+    this.isAdmin = this.auth.getRole() === 'admin';
     this.initAddEmployeeForm();
     await this.empService.loadEmployeesFirtTime();
     this.employees = this.empService.getEmployees();
@@ -60,6 +64,7 @@ export class AddEmployeeComponent implements OnInit {
     this.addEmployeeForm = this.fb.group({
       name: ['', [Validators.required, Validators.pattern(/^[a-zA-Z ]+$/)]],
       age: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
+      salary: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
       department: [null, Validators.required],
       gender: ['', Validators.required],
       bio: [''],

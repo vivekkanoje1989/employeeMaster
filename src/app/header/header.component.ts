@@ -3,6 +3,7 @@ import { AuthService } from '../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { User } from '../interfaces/user';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit, OnDestroy {
+  subcription!: Subscription;
   loggInUser: User | null = null;
   appTitle: string = 'EmployeeMaster';
   constructor(public auth: AuthService, private router: Router) {
@@ -18,9 +20,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
   ngOnInit(): void {
     if (this.auth.isAuthenticated()) {
-      this.auth.user$.subscribe(user => {
+      this.subcription = this.auth.user$.subscribe(user => {
         this.loggInUser = user;
       });
+      if (!this.loggInUser){
+        this.auth.getUser();
+      }
     }
   }
 
@@ -42,5 +47,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.loggInUser = null;
+    if (this.subcription){
+      this.subcription.unsubscribe();
+    }
   }
 }
