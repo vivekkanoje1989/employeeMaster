@@ -6,16 +6,15 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             Welcome! {{loggInUser?.username}}
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="javascript:void(0)"
-                                    (click)="gotoEmployeeMaster()">Employee Master</a></li>
-                            <li><a class="dropdown-item" href="javascript:void(0)" (click)="gotoAgGridLib()">AG Grid
+                            <li><a class="dropdown-item" routerLink="/employee" routerLinkActive="active">Employee Master</a></li>
+                            <li><a class="dropdown-item" routerLink="/lib-ag-grid" routerLinkActive="active">AG Grid
                                     Lib</a></li>
-                            <li><a class="dropdown-item" href="javascript:void(0)" (click)="gotoAddEmployee()">Add
+                            <li><a class="dropdown-item" routerLink="/add-employee" routerLinkActive="active">Add
                                     Employee</a></li>
                             <li>
                                 <hr class="dropdown-divider">
@@ -47,16 +46,15 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 Welcome! {{loggInUser?.username}}
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="javascript:void(0)"
-                                        (click)="gotoEmployeeMaster()">Employee Master</a></li>
-                                <li><a class="dropdown-item" href="javascript:void(0)" (click)="gotoAgGridLib()">AG Grid
+                                <li><a class="dropdown-item" routerLink="/employee" routerLinkActive="active" >Employee Master</a></li>
+                                <li><a class="dropdown-item" routerLink="/lib-ag-grid" routerLinkActive="active" >AG Grid
                                         Lib</a></li>
-                                <li><a class="dropdown-item" href="javascript:void(0)" (click)="gotoAddEmployee()">Add
+                                <li><a class="dropdown-item" routerLink="/add-employee" routerLinkActive="active" >Add
                                         Employee</a></li>
                                 <li>
                                     <hr class="dropdown-divider">

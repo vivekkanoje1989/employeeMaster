@@ -1,13 +1,13 @@
-import { Component, OnDestroy, OnInit, signal } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { User } from '../interfaces/user';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
@@ -31,18 +31,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   logOut(): void {
     this.auth.logout();
-  }
-
-  gotoAgGridLib(): void {
-    this.router.navigate(['/lib-ag-grid'])
-  }
-
-  gotoEmployeeMaster():void {
-    this.router.navigate(['/employee'])
-  }
-
-  gotoAddEmployee():void {
-    this.router.navigate(['/add-employee'])
   }
 
   ngOnDestroy(): void {
